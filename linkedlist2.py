@@ -8,6 +8,9 @@ class LinkedList2:
     def __init__(self):
         self.firstNode = None
         self.lastNode = None
+                
+    def __del__(self):
+        self.removeAll()
         
     def addFirst(self, data):
         node = LinkedListNode2(data)
@@ -36,6 +39,15 @@ class LinkedList2:
                 return node
             node = node.next
         return None
+        
+    def removeAll(self):
+        node = self.firstNode
+        while not node == None:
+            #print('remove', node.data)
+            next = node.next
+            node.next = None
+            node.prev = None
+            node = next
             
     def delete(self, node):
         if self.firstNode == None:
@@ -69,4 +81,6 @@ class LinkedList2:
         while not node == None:
             print(node.data)
             node = node.next
+            
+        
             
